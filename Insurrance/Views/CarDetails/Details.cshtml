@@ -1,0 +1,77 @@
+﻿@model Insurrance.Models.CarDetail
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+<div>
+    <h4>Car Detail</h4>
+    <hr />
+    <dl class="row table">
+        <dt class = "col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.Cartype)
+        </dt>
+        <dd class = "col-sm-10"style="text-align:center">
+            @Html.DisplayFor(model => model.Cartype)
+        </dd>
+        <dt class = "col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.CarModel)
+        </dt>
+        <dd class = "col-sm-10"style="text-align:center">
+            @Html.DisplayFor(model => model.CarModel)
+        </dd>
+        <dt class = "col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.ProductionYear)
+        </dt>
+        <dd class = "col-sm-10"style="text-align:center">
+            @Html.DisplayFor(model => model.ProductionYear)
+        </dd>
+        <dt class = "col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+        <dd class = "col-sm-10"style="text-align:center">
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+        <dt class = "col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.carschussis)
+        </dt>
+        <dd class = "col-sm-10"style="text-align:center">
+            @Html.DisplayFor(model => model.carschussis)
+        </dd>
+        <dt class = "col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.InsuranceType)
+        </dt>
+        <dd class = "col-sm-10"style="text-align:center">
+            @Html.DisplayFor(model => model.InsuranceType.ID)
+        </dd>
+        <dt class = "col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.ACost)
+        </dt>
+        <dd class = "col-sm-10"style="text-align:center">
+            @Html.DisplayFor(model => model.ACost)
+        </dd>
+        <dt class = "col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.Minstallment)
+        </dt>
+        <dd class = "col-sm-10"style="text-align:center">
+            @Html.DisplayFor(model => model.Minstallment)
+        </dd>
+        <dt class = "col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.Customer)
+        </dt>
+        <dd class = "col-sm-10"style="text-align:center">
+            @Html.DisplayFor(model => model.Customer.CustName)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (User.IsInRole("Edit Car"))
+                    {
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a> 
+                    }
+                    <a asp-action="Cars" asp-route-id="@Model.Customer.Id" class="btn btn-warning"><i class="fa-solid fa-house" title="Back To List"></i></a>
+   
+
+</div>

@@ -1,0 +1,79 @@
+﻿@model Insurrance.Models.AccidentTemp
+@{
+    ViewData["Title"] = "GetcarAccedintDetails";
+}
+
+<h1>Accedint Details</h1>
+
+
+<form method="post" asp-action="SaveAccident">
+<div>
+    <h4>Car Detail</h4>
+    <hr />
+    <dl class="row table">
+        <dt class="col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.FR)
+           
+        </dt>
+            <dd class="col-sm-10" style="text-align:center">
+                @Html.DisplayFor(model => model.FR)
+                <input asp-for="FR" hidden />
+            </dd>
+            <dt class="col-sm-2" style="text-align:center">
+                @Html.DisplayNameFor(model => model.FL)
+
+            </dt>
+            <dd class="col-sm-10" style="text-align:center">
+                @Html.DisplayFor(model => model.FL)
+                <input asp-for="FL" hidden />
+            </dd>
+            <dt class="col-sm-2" style="text-align:center">
+                @Html.DisplayNameFor(model => model.BR)
+
+            </dt>
+            <dd class="col-sm-10" style="text-align:center">
+                @Html.DisplayFor(model => model.BR)
+                <input asp-for="BR" hidden />
+            </dd>
+            <dt class="col-sm-2" style="text-align:center">
+                @Html.DisplayNameFor(model => model.BL)
+
+            </dt>
+            <dd class="col-sm-10" style="text-align:center">
+                @Html.DisplayFor(model => model.BL)
+                <input asp-for="BL" hidden />
+            </dd>
+            <dt class="col-sm-2" style="text-align:center">
+                @Html.DisplayNameFor(model => model.Notes)
+
+            </dt>
+            <dd class="col-sm-10" style="text-align:center">
+                @Html.DisplayFor(model => model.Notes)
+                <input asp-for="Notes" hidden />
+                <input asp-for="carschussis" hidden />
+                <input asp-for="Id" hidden />
+
+            </dd>
+        </dl>
+    </div>
+    <h3>Accedints Images</h3>
+    <div class="row" style="background-color:silver">
+
+        @foreach (var item in ViewBag.CarImages)
+        {
+
+            <div class="col-md-4 img-thumbnail">
+                <img src="@item" class="form-control" title="">
+            </div>
+        }
+    </div>
+            <div>
+
+                <button type="submit" class="btn btn-primary" title="Approve"><i class="fa-solid fa-circle-check"></i></button>
+
+                 <a asp-action="DeleteAccident" asp-route-id="@Model.Id" class="btn btn-danger" title="Reject"><i class="fa-solid fa-circle-minus"></i></a>
+
+
+                     <a asp-action="GetcarAccedint" class="btn btn-warning"><i class="fa-solid fa-house" title="Back To List"></i></a>
+            </div>
+</form>

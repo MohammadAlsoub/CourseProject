@@ -1,0 +1,91 @@
+﻿@model Insurrance.Models.CarDetailTemp
+@{
+    ViewData["Title"] = "CarDetails";
+}
+
+<form method="post" asp-action="Cars">
+<div>
+    <h4>Car Detail</h4>
+    <hr />
+    <dl class="row table">
+        <dt class="col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.Cartype)
+           
+        </dt>
+        <dd class="col-sm-10" style="text-align:center">
+            @Html.DisplayFor(model => model.Cartype)
+                <input asp-for="Cartype" hidden />
+        </dd>
+        <dt class="col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.CarModel)
+        </dt>
+        <dd class="col-sm-10" style="text-align:center">
+            @Html.DisplayFor(model => model.CarModel)
+                <input asp-for="CarModel" hidden />
+        </dd>
+        <dt class="col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.ProductionYear)
+        </dt>
+        <dd class="col-sm-10" style="text-align:center">
+            @Html.DisplayFor(model => model.ProductionYear)
+                <input asp-for="ProductionYear" hidden />
+        </dd>
+        <dt class="col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+        <dd class="col-sm-10" style="text-align:center">
+            @Html.DisplayFor(model => model.Color)
+                <input asp-for="Color" hidden />
+        </dd>
+        <dt class="col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.carschussis)
+        </dt>
+        <dd class="col-sm-10" style="text-align:center">
+            @Html.DisplayFor(model => model.carschussis)
+                <input asp-for="carschussis" hidden />
+        </dd>
+        <dt class="col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.InsuranceType)
+        </dt>
+        <dd class="col-sm-10" style="text-align:center">
+            @Html.DisplayFor(model => model.InsuranceType.ID)
+                <input asp-for="TypeID" hidden />
+        </dd>
+        <dt class="col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.ACost)
+        </dt>
+        <dd class="col-sm-10" style="text-align:center">
+            @Html.DisplayFor(model => model.ACost)
+                <input asp-for="ACost" hidden />
+        </dd>
+        <dt class="col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.Minstallment)
+        </dt>
+        <dd class="col-sm-10" style="text-align:center">
+            @Html.DisplayFor(model => model.Minstallment)
+                <input asp-for="Minstallment" hidden />
+        </dd>
+        <dt class="col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.Customer)
+        </dt>
+        <dd class="col-sm-10" style="text-align:center">
+            @Html.DisplayFor(model => model.Customer.CustName)
+                <input asp-for="CustomerNumber" hidden />
+                <input asp-for="Id" hidden />
+                <input asp-for="Customer" hidden />
+                <input asp-for="InsuranceType" hidden />
+        </dd>
+    </dl>
+</div>
+
+
+<div>
+    
+      <button  type="submit" class="btn btn-primary" title="Approve"><i class="fa-solid fa-circle-check"></i></button>
+
+        <a asp-action="DeleteCar" asp-route-id="@Model.Id" class="btn btn-danger" title="Reject"><i class="fa-solid fa-circle-minus"></i></a>
+
+    <a asp-action="Customer" class="btn btn-warning"><i class="fa-solid fa-house" title="Back To List"></i></a>
+</div>
+</form>
+

@@ -1,0 +1,114 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using Insurrance.Models.ViewModel;
+@inject SignInManager<AppUserViewModel> _Signin;
+@inject UserManager<AppUserViewModel> _userManager;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Insurrance</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Insurrance.styles.css" asp-append-version="true" />
+    <link href="~/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="~/font-awesome/css/all.min.css" rel="stylesheet" />
+</head>
+<body class="search-background">
+
+    <header>
+        <nav class="navbar navbar-dark bg-dark navbar-expand-sm navbar-toggleable-sm  border-bottom box-shadow mb-3">
+
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Insurrance</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                      
+                    </ul>
+                    <ul class="navbar-nav flex-grow-0">
+
+                      
+                        @if (_Signin.IsSignedIn(User))
+                        {
+                            
+                         
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Wellcome @User.Identity.Name
+                                </button>
+                                <ul class="dropdown-menu form-control" aria-labelledby="dropdownMenuButton1" style="background-color:lightgray;" hovar="background-color:gray;">
+
+                                    @if ((await _userManager.FindByNameAsync(User.Identity.Name)).Level == 2 ){
+                                        @if ((await _userManager.FindByNameAsync(User.Identity.Name)).TeamID == 1)
+                                    {
+                                            <a class="nav-link text-dark text-center" asp-area="" asp-controller="Checker" asp-action="Customer">Inbox</a>
+                                    } 
+                                     
+                                        @if ((await _userManager.FindByNameAsync(User.Identity.Name)).TeamID == 3)
+                                        {
+                                            <a class="nav-link text-dark text-center" asp-area="" asp-controller="Checker" asp-action="GetcarAccedint">Inbox</a>
+                                        }
+                                        @if ((await _userManager.FindByNameAsync(User.Identity.Name)).TeamID == 4)
+                                        {
+                                            <a class="nav-link text-dark text-center" asp-area="" asp-controller="Checker" asp-action="Account">Inbox</a>
+                                        }
+                                    }
+                                    @if (User.IsInRole("Customers List"))
+                                    {
+                                        <a class="nav-link text-dark text-center" asp-area="" asp-controller="Customers" asp-action="Index">Customers</a>
+                                    }
+                                    @if (User.IsInRole("Roles List"))
+                                    {
+                                        <li> <a class="nav-link text-dark text-center" asp-area="" asp-controller="Admin" asp-action="RolesList">Roles</a></li>
+                                    }@if (User.IsInRole("Users List"))
+                                    {
+                                        <li> <a class="nav-link text-dark text-center" asp-area="" asp-controller="Admin" asp-action="UsersList">Users</a></li>
+                                    }@if (User.IsInRole("Configuration List"))
+                                    {
+                                        <li> <a class="nav-link text-dark text-center" asp-area="" asp-controller="Admin" asp-action="Config">Configuration</a></li>
+                                    }
+                                    <li>
+                                        <form method="post" asp-controller="Account" asp-action="logout">
+                                            <button class="btn btn-danger form-control">Logout</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        }
+                        else
+                        {
+
+                            <li class="nav-item dropdown show">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>
+
+                        }
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted" style=" bottom:0;position: fixed; width:100%;">
+        <div class="container">
+            &copy; 2023 - Insurrance - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+

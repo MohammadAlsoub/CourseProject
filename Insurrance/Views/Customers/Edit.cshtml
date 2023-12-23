@@ -1,0 +1,78 @@
+﻿@model Insurrance.Models.Customer
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+
+<h4>Update Customer Information</h4>
+<hr />
+
+<div class="container">
+    <form asp-action="Edit">
+        <input type="hidden" asp-for="Id" />
+        <div class="row">
+            <div asp-validation-summary="All" class="text-danger"></div>
+           
+        
+            <div class="col-md-4">
+                <label asp-for="CustName" class="control-label"></label>
+                <input asp-for="CustName" class="form-control" />
+                <span asp-validation-for="CustName" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Nat" class="control-label"></label>
+                <select asp-for="Nat" class="form-control" asp-items="ViewBag.Nat"></select>
+                <span asp-validation-for="Nat" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="DOB" class="control-label"></label>
+                <input asp-for="DOB" class="form-control" />
+                <span asp-validation-for="DOB" class="text-danger"></span>
+            </div>
+            </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="PhoneN1" class="control-label"></label>
+                <input asp-for="PhoneN1" class="form-control" />
+                <span asp-validation-for="PhoneN1" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="PhoneN2" class="control-label"></label>
+                <input asp-for="PhoneN2" class="form-control" />
+                <span asp-validation-for="PhoneN2" class="text-danger"></span>
+            </div>
+            </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="StatusID" class="control-label"></label>
+                <select asp-for="StatusID" class="form-control" asp-items="ViewBag.Cstatus" ></select>
+                <span asp-validation-for="StatusID" class="text-danger"></span>
+            </div>
+            </div>
+            
+            <div class="col-md-4">
+                <br />
+            <input type="submit" value="Save" class="btn btn-success" title="Save Edit"/>
+            <a asp-action="Index" class="btn btn-warning" title="Back To List"><i class="fa-solid fa-house"></i></a>
+            </div>
+        </form>
+    
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

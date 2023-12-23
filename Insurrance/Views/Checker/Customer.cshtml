@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Insurrance.Models.CustomerTemp>
+
+@{
+    ViewData["Title"] = "Customer";
+}
+
+<h1>All Pending Tasks</h1>
+
+<a asp-action="Customer" class="btn btn-secondary">Customer List</a>
+<a asp-action="Cars" class="btn btn-secondary">Car List</a>
+<br />
+
+@if (Model.Count()<1)
+{
+    <br />
+    <div class="row">
+    <b><span class="alert alert-success col-md-8" style="font-size:25pt">No Pinding Customer</span></b>
+    </div>
+
+}
+else{
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustName)
+            </th>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneN1)
+            </th>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.StatusID)
+            </th>
+            <th>
+                Operations
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneN1)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status.Name)
+                </td>
+                <td>
+
+                 
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary" title="Detail"><i class="fa-solid fa-circle-info"></i></a>
+
+                                      
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+}

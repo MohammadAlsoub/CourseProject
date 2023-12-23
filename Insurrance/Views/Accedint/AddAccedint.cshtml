@@ -1,0 +1,98 @@
+﻿@model Accident
+
+<h2>Add Accident & New Check result</h2>
+<hr />
+
+<form method="post" action="AddAccedint" enctype="multipart/form-data">
+<div class="row">
+    <div class="col-md-3">
+        <label class="control-label">Front Left</label>
+        <input asp-for="FL" class="form-control" />
+        <span asp-validation-for="FL" class="text-danger"></span>
+    </div>
+    <div class="col-md-3">
+        <label class="control-label">Front Right</label>
+        <input asp-for="FR" class="form-control" />
+        <span asp-validation-for="FR" class="text-danger"></span>
+    </div>
+    <div class="col-md-3">
+        <label class="control-label">Back Left</label>
+        <input asp-for="BL" class="form-control" />
+        <span asp-validation-for="BL" class="text-danger"></span>
+    </div>
+
+
+    <div class="col-md-3">
+        <label class="control-label">Back Right</label>
+        <input asp-for="BR" class="form-control" />
+        <span asp-validation-for="BR" class="text-danger"></span>
+    </div>
+    <div class="col-md-3">
+        <label class="control-label">Cars Chussis Number</label>
+        <input asp-for="carschussis" readonly class="form-control" value="@ViewBag.chsnum" />
+        <span asp-validation-for="carschussis" class="text-danger"></span>
+    </div>
+
+</div>
+<div class="col-md-12">
+    <label class="control-label">Notes</label>
+    <input asp-for="Notes" class="form-control" />
+    <span asp-validation-for="Notes" class="text-danger"></span>
+</div>
+
+<div class="col-md-12">
+    <hr />
+    <h3>Attachement</h3>
+    <br />
+    <div id="AddUpload" class="col-md-4">
+
+        
+        <input type="file" required name="files" id="files" class="form-control" />
+       
+    </div>
+        <button id="Add" type="button" class="btn btn-link offset-4" style="padding-top:10px;">Add</button>
+        <div>
+            <input type="submit" value="Save" class="btn btn-success" />
+            <a asp-action="Index" asp-controller="Customers" class="btn btn-warning" title="Back To List"><i class="fa-solid fa-house"></i></a>
+        </div>
+      
+</form>
+       
+
+ </div>
+
+
+
+
+
+@section Scripts {
+   
+      
+
+    <script>
+        $('document').ready(function () { 
+            var Count = 1;
+
+            $('#Add').click(function () {
+                if (Count < 10) {
+
+                    var html = '<div class="row"><div id="inputFormRow"  style="padding-top:10px;"><div class="d-flex justify-content-between"><input type="file" name="files" class="form-control" /><button class="btn btn-danger" type="button"  id="remove"><i class="fa-solid fa-trash-can"></i></button></div></div></div>'
+
+                    $('#AddUpload').append(html);
+                    Count = Count + 1;
+
+                } 
+                if (Count==10) { 
+                    $('#Add').hide();
+                }
+            });
+
+            $(document).on('click', '#remove', function () {
+                $(this).closest('#inputFormRow').remove();
+                Count = Count - 1;
+                $('#Add').show();
+            });
+        });
+
+    </script>
+    }

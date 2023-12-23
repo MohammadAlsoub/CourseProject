@@ -1,0 +1,117 @@
+﻿@model Insurrance.Models.CarDetail
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Add New Car</h1>
+
+
+<hr />
+
+        <form asp-action="Create">
+            <div asp-validation-summary="All" class="text-danger"></div>
+           <div class="row">
+               <br /><h2>Car information</h2><br />
+            <div class="col-md-4">
+            <label asp-for="Cartype" class="control-label"></label>
+                <input asp-for="Cartype" class="form-control" />
+                <span asp-validation-for="Cartype" class="text-danger"></span>
+            </div>
+        <div class="col-md-4">
+                <label asp-for="CarModel" class="control-label"></label>
+                <input asp-for="CarModel" class="form-control" />
+                <span asp-validation-for="CarModel" class="text-danger"></span>
+            </div>
+        <div class="col-md-4">
+                <label asp-for="ProductionYear" class="control-label"></label>
+                <input asp-for="ProductionYear" class="form-control" />
+                <span asp-validation-for="ProductionYear" class="text-danger"></span>
+            </div>
+            </div>
+    <div class="row">
+        <div class="col-md-4">
+                <label asp-for="Color" class="control-label"></label>
+                <input asp-for="Color" class="form-control" />
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+        <div class="col-md-4">
+                <label asp-for="carschussis" class="control-label"></label>
+                <input asp-for="carschussis" class="form-control" />
+                <span asp-validation-for="carschussis" class="text-danger"></span>
+            </div>
+        <div class="col-md-4">
+                <label asp-for="TypeID" class="control-label"></label>
+                <select asp-for="TypeID" class ="form-control" asp-items="ViewBag.TypeID"></select>
+            </div>
+        <div class="row">
+        <div class="col-md-4">
+                <label asp-for="ACost" class="control-label"></label>
+                <input asp-for="ACost" class="form-control" />
+                <span asp-validation-for="ACost" class="text-danger"></span>
+            </div>
+            
+
+        <div class="col-md-4">
+                <label asp-for="Minstallment" class="control-label"></label>
+                <input asp-for="Minstallment" class="form-control" />
+                <span asp-validation-for="Minstallment" class="text-danger"></span>
+            </div>
+        <div class="col-md-4">
+                <label asp-for="CustomerNumber" class="control-label"></label>
+                <input asp-for="CustomerNumber" readonly class ="form-control" value="@ViewBag.CustomerNumber"/>
+            </div>
+            </div>
+
+   
+@*             ------------------------------------------------
+
+ *@
+        <br /><h2>Car Check</h2><br />
+            <div class="row">
+                <div class="col-md-3">
+                    <label class="control-label">Front Left</label>
+                    <input name="FL" class="form-control" />
+                   
+                </div>
+                <div class="col-md-3">
+                    <label  class="control-label">Front Right</label>
+                    <input name="FR" class="form-control" />
+                   
+                </div>
+                <div class="col-md-3">
+                    <label  class="control-label">Back Left</label>
+                    <input name="BL" class="form-control" />
+                
+                </div>
+          
+           
+                <div class="col-md-3">
+                    <label class="control-label">Back Right</label>
+                    <input name="BR" class="form-control" />
+                   
+                </div>
+        </div>
+                <div class="col-md-12">
+                    <label  class="control-label">Notes</label>
+                    <input name="Notes" class="form-control" />
+                   
+                </div>
+                
+            <div class="row">
+                <div class="col-md-4">
+                    <br />
+                    <input type="submit" value="Add car" class="btn btn-success" />
+                    <a asp-action="Index" asp-controller="Customers" class="btn btn-warning"><i class="fa-solid fa-house" title="Back To Customers List"></i></a>
+
+                </div>
+
+</form>
+ 
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

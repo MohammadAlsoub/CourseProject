@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Insurrance.Models.CarDetailTemp>
+
+@{
+    ViewData["Title"] = "Cars";
+}
+
+<h1>All Pending Tasks</h1>
+
+<a asp-action="Customer" class="btn btn-secondary">Customer List</a>
+<a asp-action="Cars" class="btn btn-secondary">Car List</a>
+<br />
+
+@if (Model.Count() < 1)
+{
+    <br />
+    <div class="row">
+        <b><span class="alert alert-success col-md-8" style="font-size:25pt">No Pinding Customer</span></b>
+    </div>
+
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CarModel)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Color )
+                </th>
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.InsuranceType.Name)
+                </th>
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Customer.CustName)
+                </th>
+                <th>
+                    Operations
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CarModel)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Color)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InsuranceType.Name)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Customer.CustName)
+                    </td>
+                    <td>
+
+
+                        <a asp-action="CarDetails" asp-route-id="@item.Id" class="btn btn-primary" title="Detail"><i class="fa-solid fa-circle-info"></i></a>
+
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

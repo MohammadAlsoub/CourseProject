@@ -1,0 +1,60 @@
+﻿@model Insurrance.Models.Accident
+
+
+<h1>Car History</h1>
+
+
+
+<hr />
+
+
+<h3>Last Car Check</h3>
+<hr />
+<div class="row">
+    <div class="col-md-3">
+        <label class="control-label">Front Left</label>
+        <input asp-for="FL" readonly class="form-control" />
+        <span asp-validation-for="FL" class="text-danger"></span>
+    </div>
+    <div class="col-md-3">
+        <label class="control-label">Front Right</label>
+        <input asp-for="FR" readonly class="form-control" />
+        <span asp-validation-for="FR" class="text-danger"></span>
+    </div>
+    <div class="col-md-3">
+        <label class="control-label">Back Left</label>
+        <input asp-for="BL" readonly class="form-control" />
+        <span asp-validation-for="BL" class="text-danger"></span>
+    </div>
+
+
+    <div class="col-md-3">
+        <label class="control-label">Back Right</label>
+        <input asp-for="BR" readonly class="form-control" />
+        <span asp-validation-for="BR" class="text-danger"></span>
+    </div>
+    <div class="col-md-3">
+        <label class="control-label">Cars Chussis Number</label>
+        <input asp-for="carschussis" readonly class="form-control"  />
+        <span asp-validation-for="carschussis" class="text-danger"></span>
+    </div>
+
+</div>
+<div class="col-md-12">
+    <label class="control-label">Notes</label>
+    <input asp-for="Notes" readonly class="form-control" />
+    <span asp-validation-for="Notes" class="text-danger"></span>
+</div>
+<hr />
+
+<h3>Accedints Images</h3>
+<div class="row" style="background-color:silver">
+    
+    @foreach (var item in ViewBag.CarImages)
+    {
+
+        <div class="col-md-4 img-thumbnail" >
+            <img src="@item" class="form-control" title="">
+        </div>
+    }
+</div>

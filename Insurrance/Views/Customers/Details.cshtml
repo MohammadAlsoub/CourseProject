@@ -1,0 +1,69 @@
+﻿@model Insurrance.Models.Customer
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="row table" >
+        <dt class = "col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.CustName)
+        </dt>
+        <dd class = "col-sm-10"style="text-align:center">
+            @Html.DisplayFor(model => model.CustName)
+        </dd>
+        <dt class = "col-sm-2"style="text-align:center">
+            @Html.DisplayNameFor(model => model.Nationality)
+        </dt>
+        <dd class = "col-sm-10"style="text-align:center">
+            @Html.DisplayFor(model => model.Nationality.NameAR)
+        </dd>
+        <dt class = "col-sm-2"style="text-align:center">
+            @Html.DisplayNameFor(model => model.DOB)
+        </dt>
+        <dd class = "col-sm-10"style="text-align:center">
+            @Html.DisplayFor(model => model.DOB)
+        </dd>
+        <dt class = "col-sm-2"style="text-align:center">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10"style="text-align:center">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2"style="text-align:center">
+            @Html.DisplayNameFor(model => model.PhoneN1)
+        </dt>
+        <dd class = "col-sm-10"style="text-align:center">
+            @Html.DisplayFor(model => model.PhoneN1)
+        </dd>
+        <dt class = "col-sm-2"style="text-align:center">
+            @Html.DisplayNameFor(model => model.PhoneN2)
+        </dt>
+        <dd class = "col-sm-10"style="text-align:center">
+            @Html.DisplayFor(model => model.PhoneN2)
+        </dd>
+        <dt class = "col-sm-2"style="text-align:center">
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd class = "col-sm-10"style="text-align:center">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class = "col-sm-2"style="text-align:center">
+            @Html.DisplayNameFor(model => model.StatusID)
+        </dt>
+        <dd class = "col-sm-10"style="text-align:center">
+            @Html.DisplayFor(model => model.Status.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (User.IsInRole("Edit Customer Data"))
+                    {
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary" title="Edit"><i class="fa-solid fa-pen-to-square"></i>|</a> 
+                    }
+    <a asp-action="Index" class="btn btn-warning"><i class="fa-solid fa-house" title="Back To List"></i></a>
+</div>

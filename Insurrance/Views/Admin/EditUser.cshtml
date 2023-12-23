@@ -1,0 +1,81 @@
+﻿@model Insurrance.Models.ViewModel.UserRoleViewModel
+
+
+
+<h1>Users</h1>
+
+<h4>Edit User User</h4>
+<hr />
+<form asp-action="EditUser" method="post">
+    <div class="row">
+        <div class="col-md-4">
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RegisterViewModel.Email"  class="control-label"></label>
+                <input asp-for="RegisterViewModel.Email"  class="form-control" />
+                <span asp-validation-for="RegisterViewModel.Email" class="text-danger"></span>
+            </div>
+
+            <input asp-for="RegisterViewModel.Id" class="form-control" hidden/>
+            <div class="form-group">
+                <label asp-for="RegisterViewModel.PhoneNumber" class="control-label"></label>
+                <input asp-for="RegisterViewModel.PhoneNumber"  class="form-control" />
+                <span asp-validation-for="RegisterViewModel.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <br />
+                <input type="submit" value="Update" class="btn btn-primary col-md-12" /><br />
+                <a asp-action="UsersList" asp-controller="Admin" class="btn btn-warning col-md-12">Cancel</a>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+            <br />
+            <div class="form-group">
+                <label asp-for="RegisterViewModel.TeamID" class="control-label"></label>
+                <select asp-for="RegisterViewModel.TeamID" class="form-control" asp-items="@ViewBag.Teams"></select>
+                <span asp-validation-for="RegisterViewModel.TeamID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegisterViewModel.Level" class="control-label"></label>
+                <select asp-for="RegisterViewModel.Level" class="form-control"><option value="1">Maker</option><option value="2">Checker</option></select>
+                <span asp-validation-for="RegisterViewModel.Level" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="card col-md-4">
+            <div class="card-header"><b><h4><span>User Authentication</span></h4></b></div>
+            <div class="card-body" style="background-color:lightgray">
+
+          
+
+                    @for (int x = 0; x < Model.UserRolesModel.Count; x++)
+                    {
+
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" asp-for="@Model.UserRolesModel[x].IsSelected" type="checkbox" id="flexSwitchCheckDefault">
+                            <b> <label class="form-check-label" for="flexSwitchCheckDefault">@Model.UserRolesModel[x].RoleName</label></b>
+                        </div>
+                        <input asp-for="@Model.UserRolesModel[x].RoleId" hidden class="col-md-4">
+                        <input asp-for="@Model.UserRolesModel[x].RoleName" hidden class="col-md-4">
+                        
+
+                    }
+
+
+                </div> 
+            <div class="card-footer">
+            </div>
+        </div>
+    </div>
+
+    <div>
+    </div>
+</form>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

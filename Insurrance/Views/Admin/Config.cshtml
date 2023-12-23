@@ -1,0 +1,91 @@
+﻿@model Insurrance.Models.Configuration
+
+
+<h1>Application Config</h1>
+
+<form method="post" asp-action="Config">
+
+
+    
+
+        <input asp-for="Id" class="form-control" hidden/>
+    <div class="row">
+        <div class="col-md-3">
+            <label class="control-label" asp-for="CompanyName"></label>
+            <input asp-for="CompanyName" class="form-control" />
+            <span asp-validation-for="CompanyName" class="text-danger"></span>
+        </div>
+        </div>
+        <hr />
+    <div class="row">
+    <div class="col-md-6">
+        <label class="control-label" asp-for="Path"></label>
+        <input asp-for="Path" class="form-control" />
+        <span asp-validation-for="Path" class="text-danger"></span>
+    </div>
+    </div>
+    
+    <hr />
+    <div class="row">
+        <div class="form-check form-switch offset-1">
+            <input class="form-check-input" asp-for="Send" type="checkbox" id="flexSwitchCheckDefault">
+            <b> <label class="form-check-label" for="flexSwitchCheckDefault" asp-for="Send"></label></b>
+        </div>
+     
+        <div class="col-md-3">
+            <label class="control-label" asp-for="CompanyEmail"></label>
+            <input asp-for="CompanyEmail" class="form-control" />
+            <span asp-validation-for="CompanyEmail" class="text-danger"></span>
+        </div>
+        <div class="col-md-3">
+            <label class="control-label" asp-for="EmailPassword"></label>
+            <input asp-for="EmailPassword" class="form-control" />
+            <span asp-validation-for="EmailPassword" class="text-danger"></span>
+        </div>
+        <div class="col-md-3">
+            <label class="control-label" asp-for="SMTP"></label>
+            <input asp-for="SMTP" class="form-control" />
+            <span asp-validation-for="SMTP" class="text-danger"></span>
+        </div>
+        <div class="col-md-1">
+            <label class="control-label" asp-for="Port"></label>
+            <input asp-for="Port" class="form-control" />
+            <span asp-validation-for="Port" class="text-danger"></span>
+        </div>
+      
+
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-8">
+            <label class="control-label" asp-for="Wellcome"></label>
+            <input asp-for="Wellcome" class="form-control" />
+            <span asp-validation-for="Wellcome" class="text-danger"></span>
+        </div>
+        <div class="col-md-8">
+            <label class="control-label" asp-for="AddedCar"></label>
+            <input asp-for="AddedCar" class="form-control" />
+            <span asp-validation-for="AddedCar" class="text-danger"></span>
+        </div>
+        <div class="col-md-8">
+            <label class="control-label" asp-for="Update"></label>
+            <input asp-for="Update" class="form-control" />
+            <span asp-validation-for="Update" class="text-danger"></span>
+        </div>
+        <div class="col-md-8">
+            <label class="control-label" asp-for="Accident"></label>
+            <input asp-for="Accident" class="form-control" />
+            <span asp-validation-for="Accident" class="text-danger"></span>
+        </div>
+        <div class="col-md-8">
+            <label class="control-label" asp-for="compensation"></label>
+            <input asp-for="compensation" class="form-control" />
+            <span asp-validation-for="compensation" class="text-danger"></span>
+        </div>
+    </div>
+    <br />
+    <div>
+        <input type="submit" class="btn btn-success" value="Update Setting"/>
+        <a class="btn btn-warning" asp-action="Index" asp-controller="Home">Cancel</a>
+    </div>
+</form>

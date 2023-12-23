@@ -1,0 +1,81 @@
+﻿@model Insurrance.Models.CustomerTemp
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<form method="post" asp-action="Customer">
+<div>
+    <h4>Customer</h4>
+    <hr />
+        <input type="text" asp-for="@Model.Id" hidden />
+    <dl class="row table">
+        <dt class="col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.CustName)
+                <input type="text" asp-for="@Model.CustName" hidden />
+        </dt>
+        <dd class="col-sm-10" style="text-align:center">
+            @Html.DisplayFor(model => model.CustName)
+        </dd>
+        <dt class="col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.Nationality)
+                <input type="text" asp-for="@Model.Nat" hidden />
+        </dt>
+        <dd class="col-sm-10" style="text-align:center">
+            @Html.DisplayFor(model => model.Nationality.NameAR)
+        </dd>
+        <dt class="col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.DOB)
+                <input type="text" asp-for="@Model.DOB" hidden />
+        </dt>
+        <dd class="col-sm-10" style="text-align:center">
+            @Html.DisplayFor(model => model.DOB)
+        </dd>
+        <dt class="col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.Email)
+                <input type="text" asp-for="@Model.Email" hidden />
+        </dt>
+        <dd class="col-sm-10" style="text-align:center">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.PhoneN1)
+                <input type="text" asp-for="@Model.PhoneN1" hidden />
+        </dt>
+        <dd class="col-sm-10" style="text-align:center">
+            @Html.DisplayFor(model => model.PhoneN1)
+        </dd>
+        <dt class="col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.PhoneN2)
+                <input type="text" asp-for="@Model.PhoneN2" hidden />
+        </dt>
+        <dd class="col-sm-10" style="text-align:center">
+            @Html.DisplayFor(model => model.PhoneN2)
+        </dd>
+        <dt class="col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.Address)
+                <input type="text" asp-for="@Model.Address" hidden />
+        </dt>
+        <dd class="col-sm-10" style="text-align:center">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class="col-sm-2" style="text-align:center">
+            @Html.DisplayNameFor(model => model.StatusID)
+                <input type="text" asp-for="@Model.StatusID" hidden />
+        </dt>
+        <dd class="col-sm-10" style="text-align:center">
+            @Html.DisplayFor(model => model.Status.Name)
+
+        </dd>
+    </dl>
+</div>
+<div>
+    
+      <button  type="submit" class="btn btn-primary" title="Approve"><i class="fa-solid fa-circle-check"></i></button>
+
+    <a asp-action="DeleteCustomer" asp-route-id="@Model.Id" class="btn btn-danger" title="Reject"><i class="fa-solid fa-circle-minus"></i></a>
+
+    <a asp-action="Customer" class="btn btn-warning"><i class="fa-solid fa-house" title="Back To List"></i></a>
+</div>
+</form>

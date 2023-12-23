@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Insurrance.Models.ViewModel.AccidentTempModelView>
+@{
+    ViewData["Title"] = "GetcarAccedint";
+}
+
+<h1>Car Accident</h1>
+
+@if (Model.Count() < 1)
+{
+    <br />
+    <div class="row">
+        <b><span class="alert alert-success col-md-8" style="font-size:25pt">No Pinding Accident</span></b>
+    </div>
+
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cartype)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CarModel)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Color)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.carschussis)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Notes)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CustomerName)
+                </th>
+                <th>
+                    Operations
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                            @Html.DisplayFor(modelItem => item.Cartype)
+                    </td>
+                    <td>
+                            @Html.DisplayFor(modelItem => item.CarModel)
+                    </td>
+                    <td>
+                            @Html.DisplayFor(modelItem => item.Color)
+                    </td>
+                    <td>
+                            @Html.DisplayFor(modelItem => item.carschussis)
+                    </td>
+                    <td>
+                            @Html.DisplayFor(modelItem => item.Notes)
+                    </td>
+                    <td>
+                            @Html.DisplayFor(modelItem => item.CustomerName)
+                    </td>
+                    <td>
+
+                        <a asp-action="GetcarAccedintDetails" asp-route-chussis="@item.carschussis" class="btn btn-primary" title="Detail"><i class="fa-solid fa-circle-info"></i></a>
+
+                    </td>
+                </tr>
+                }
+        </tbody>
+    </table>
+
+
+}

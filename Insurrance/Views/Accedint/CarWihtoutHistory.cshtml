@@ -1,0 +1,122 @@
+﻿@model Insurrance.Models.ViewModel.CarsViewModel
+
+<h1>Car History</h1>
+<div class="offset-10">
+
+    @if (User.IsInRole("Customers List"))
+    {
+       <a asp-action="Index" asp-controller="Customers" class="btn btn-primary" title="Back To Customer List"><i class="fa-solid fa-house"></i></a>
+    } @if (User.IsInRole("View Customer Cars"))
+    {  <a asp-action="Cars" asp-controller="CarDetails" asp-route-id="@Model.CarDetails.CustomerNumber" class="btn btn-outline-dark" title="View Cars"><i class="fa-solid fa-car-side"></i></a> 
+    } @if (User.IsInRole("Car Details"))
+    {  <a asp-action="Details" asp-controller="CarDetails" asp-route-id="@Model.CarDetails.Id" class="btn btn-primary" title="Car Detail"><i class="fa-solid fa-circle-info"></i></a> 
+    } @if (User.IsInRole("Add Accident"))
+    { <a asp-action="AddAccedint" asp-controller="Accedint" asp-route-CHSNum="@Model.CarFirstCheck.carschussis" class="btn btn-danger" title="Add Accident"><i class="fa-solid fa-car-burst"></i></a>
+    }
+</div>
+<hr />
+<h3>Car Detail</h3>
+<div class="row">
+    <div class="col-md-4">
+        <label asp-for="CarDetails.Cartype" class="control-label"></label>
+        <input asp-for="CarDetails.Cartype" readonly class="form-control" />
+       
+    </div>
+    <div class="col-md-4">
+        <label asp-for="CarDetails.CarModel" class="control-label"></label>
+        <input asp-for="CarDetails.CarModel" readonly class="form-control" />
+       
+    </div>
+    <div class="col-md-4">
+        <label asp-for="CarDetails.ProductionYear" class="control-label"></label>
+        <input asp-for="CarDetails.ProductionYear" readonly class="form-control" />
+      
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <label asp-for="CarDetails.Color" class="control-label"></label>
+        <input asp-for="CarDetails.Color" readonly class="form-control" />
+      
+    </div>
+    <div class="col-md-4">
+        <label asp-for="CarDetails.carschussis" class="control-label"></label>
+        <input asp-for="CarDetails.carschussis" readonly class="form-control" />
+      
+    </div>
+    <div class="col-md-4">
+        <label asp-for="CarDetails.TypeID" class="control-label"></label>
+        <input asp-for="CarDetails.InsuranceType.Name" readonly class="form-control" />
+       
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <label asp-for="CarDetails.ACost" class="control-label"></label>
+        <input asp-for="CarDetails.ACost" readonly class="form-control" />
+   
+    </div>
+    <div class="col-md-4">
+        <label asp-for="CarDetails.Minstallment" class="control-label"></label>
+        <input asp-for="CarDetails.Minstallment" readonly class="form-control" />
+      
+    </div>
+    <div class="col-md-4">
+        <label asp-for="CarDetails.Customer.CustName" class="control-label"></label>
+        <input asp-for="CarDetails.Customer.CustName" readonly class="form-control" />
+
+    </div>
+    
+</div>
+
+
+<h3>Last Car Check</h3>
+<hr />
+<div class="row">
+    <div class="col-md-3">
+        <label class="control-label">Front Left</label>
+        <input asp-for="CarFirstCheck. FL" readonly class="form-control" />
+        <span asp-validation-for="CarFirstCheck.FL" class="text-danger"></span>
+    </div>
+    <div class="col-md-3">
+        <label class="control-label">Front Right</label>
+        <input asp-for="CarFirstCheck.FR" readonly class="form-control" />
+        <span asp-validation-for="CarFirstCheck.FR" class="text-danger"></span>
+    </div>
+    <div class="col-md-3">
+        <label class="control-label">Back Left</label>
+        <input asp-for="CarFirstCheck.BL" readonly class="form-control" />
+        <span asp-validation-for="CarFirstCheck.BL" class="text-danger"></span>
+    </div>
+
+
+    <div class="col-md-3">
+        <label class="control-label">Back Right</label>
+        <input asp-for="CarFirstCheck.BR" readonly class="form-control" />
+        <span asp-validation-for="CarFirstCheck.BR" class="text-danger"></span>
+    </div>
+    <div class="col-md-3">
+        <label class="control-label">Cars Chussis Number</label>
+        <input asp-for="CarFirstCheck.carschussis" readonly class="form-control" />
+        <span asp-validation-for="CarFirstCheck.carschussis" class="text-danger"></span>
+    </div>
+
+</div>
+<div class="col-md-12">
+    <label class="control-label">Notes</label>
+    <input asp-for="CarFirstCheck.Notes" readonly class="form-control" />
+    <span asp-validation-for="CarFirstCheck.Notes" class="text-danger"></span>
+</div>
+<hr />
+
+<h3>Accedints Images</h3>
+<div class="row" style="background-color:silver">
+
+    @foreach (var item in ViewBag.CarImages)
+    {
+
+        <div class="col-md-4 img-thumbnail">
+            <img src="@item" class="form-control" title="">
+        </div>
+    }
+</div>

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Insurrance.Models.CarDetail>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Customer Cars</h1>
+
+<p>
+    @if (User.IsInRole("Add New Car"))
+ {
+    <a asp-action="Create" asp-route-Custid="@ViewBag.CustomerNumber" class="btn btn-success col-md-4 offset-1">Add New CAR</a>
+ } 
+ <a asp-action="Index" asp-controller="Customers" class="btn btn-secondary col-md-4 offset-1">Customer List</a>
+</p>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cartype)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarModel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InsuranceType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
+            <th>
+                Operations
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cartype)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarModel)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.InsuranceType.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.CustName)
+            </td>
+            <td>
+                    @if (User.IsInRole("Edit Car"))
+                    {
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                    }   @if (User.IsInRole("Car Details"))
+                    {
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary" title="Detail"><i class="fa-solid fa-circle-info"></i></a>
+                    }   @if (User.IsInRole("Add Accident"))
+                    {
+                        <a asp-action="AddAccedint" asp-controller="Accedint" asp-route-CHSNum="@item.carschussis" class="btn btn-danger" title="Add Accident"><i class="fa-solid fa-car-burst"></i></a>
+                    }   @if (User.IsInRole("Car History"))
+                    {
+                    <a asp-action="getCarHistory" asp-controller="Accedint" asp-route-ShasiNumber="@item.carschussis" class="btn btn-primary" title="History"><i class="fa-solid fa-clock-rotate-left"></i></a>
+                    }
+                    </td>
+        </tr>
+}
+    </tbody>
+</table>
